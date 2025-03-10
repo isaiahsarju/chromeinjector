@@ -2,4 +2,4 @@ asyncio~=3.4.3
 requests[socks]~=2.26.0
 requests~=2.26.0
 virtualenv~=20.8.0
-websockets~=10.0s
+websockets~=10.0
