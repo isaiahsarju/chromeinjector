@@ -23,7 +23,7 @@ from contextlib import asynccontextmanager
 import json
 from string import Template
 import logging
-from injectorcommands import InjectorCommands
+from .injectorcommands.injectorcommands import InjectorCommands
 assert sys.version_info >= (3, 11)
 
 

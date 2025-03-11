@@ -9,6 +9,11 @@ python3 -m venv [env]
 source [env]/bin/activate
 python3 -m pip install -r requirements.txt
 ```
+## Run
+```bash
+# from parent directory of chromeinjector
+python3 -i -m chromeinjector.chromeinjector
+```
 
 ## Philosophy
 `ChromeInjector` is first and foremost a python API for interacting with Chromium browsers, so Edge and Chrome mostly. ChromeInjector instances do not establish a persistent connection to target browsers with a [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/) (CDP) port open. They merely point towards a target host and port. Once you want to execute a CDP command, the injector attempts to connect to the CDP port, enumerate open tabs, narrow down targets (based on url regex or a target WebSocket url), and then send the command with(out) parameters. The driving design principles behind `ChromeInjector` are:
@@ -33,12 +38,12 @@ The source of truth should be the [Docstring](https://peps.python.org/pep-0257/)
 
 ### `ChromeInjector` class
 
-View Docstring help by running `help(ChromeInjector)` from a python3 shell after `from chromeinjector import ChromeInjector`
+View Docstring help by running `help(ChromeInjector)` from a python3 shell with [chromeinjector loaded as a module](#run).
 
 
 ### `InjectorCommands` class
 `injectorcommands.py` contains the `InjectorCommands` class. This is used by `ChromeInjector`.
-View Docstring help by running `help(InjectorCommands)` from a python3 shell after `from injectorcommands import InjectorCommands`
+View Docstring help by running `help(InjectorCommands)` from a python3 shell with [chromeinjector loaded as a module](#run).
 
 ## Execution Flow
 It's probably hepful to understand what happens when a built-in ChromeInjector command is ran such as `cdp_get_all_cookies`:
