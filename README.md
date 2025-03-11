@@ -131,7 +131,7 @@ Please follow the following:
 1. Add Docstring compliant documentation to all modules/methods/functions
 1. Add type hinting to all methods/functions
 1. Comment excessively
-1. Keep arguments as python data types as long as possible. E.g. Don't write functions that take JSON. Write functions that take dicts/sets/lists/etc and let _cdp_ws_arb convert them to JSON right before making websocket request.
+1. Keep arguments as python data types as long as possible. E.g. Don't write functions that take JSON. Write functions that take dicts/sets/lists/etc and let `_cdp_ws_arb` convert them to JSON right before making websocket request.
 
 
 Thnx!
@@ -148,5 +148,3 @@ Open an issue if you'd like a feature.
 
 ## Greetz
 - Original inspiration from: [WhiteChocolateMacademiaNut](https://github.com/slyd0g/WhiteChocolateMacademiaNut)
-- Thank you to FX Teammates for feedback and feature requests
-- Thank you [ACN Security](https://www.accenture.com/us-en/services/cybersecurity) for allowing me to work on this project over the years
