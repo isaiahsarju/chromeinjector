@@ -356,7 +356,6 @@ class ChromeInjector:
 
         # Connect to websocket and execute CDP method
         # based on TLS/SSL or not
-        self._logger.debug('HERE 2')
         if self._wss:
             old_ws_url = ws_url
             if 'wss' not in old_ws_url:
@@ -369,7 +368,6 @@ class ChromeInjector:
                 ssl_context.verify_mode = ssl.CERT_NONE
         else:
             ssl_context = None
-        self._logger.debug('HERE 3')
         if self._proxy_type:
             if self._proxy_type.upper() == 'SOCKS5':
                 self._logger.info(f"Making ws request through SOCKS5 proxy ({self._proxy_host}:{self._proxy_port})")
@@ -460,7 +458,6 @@ class ChromeInjector:
             self._logger.info("No cdp_params. Running without arguments")
             ws_response = asyncio.run(self._cdp_ws_arb_timeout(ws_url, cdp_method,time=time))
 
-        self._logger.debug(f"HERE1 ws_response: {ws_response}")
         result = self._get_result(ws_response)
         result_size = sys.getsizeof(result)
         self._logger.info(f"Response size of {result_size} bytes")
