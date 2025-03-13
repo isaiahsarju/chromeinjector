@@ -140,7 +140,7 @@ Thnx!
 
 # Other Stuff
 
-## `injectorshell.py`
+## Injector Shell
 
 My implementation of `chromeinjector` with a CMD2 shell: [Injector Shell](https://github.com/isaiahsarju/injectorshell)
 
