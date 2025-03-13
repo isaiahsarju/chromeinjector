@@ -150,3 +150,7 @@ Open an issue if you'd like a feature.
 
 ## Greetz
 - Original inspiration from: [WhiteChocolateMacademiaNut](https://github.com/slyd0g/WhiteChocolateMacademiaNut)
+
+## Need Help?
+
+If you encounter issues... open an [issue](https://github.com/isaiahsarju/chromeinjector/issues). For questions hit me up at injector-shell.dwindle466 \[at\] passmail \[dot\] com.
