@@ -17,7 +17,7 @@ class InjectorCommands:
     # Pre-written CDP commands
     # Update _commands dict after adding new CDP command
     # Create new cdp_[command name] function
-    # Syntax is (method, dict of {parameters:description}, description)
+    # Syntax is (method, dict of required {parameters:description}, description)
     # Set of parameters are important for the create_validated_params class function
     _GET_TAB_COOKIES    = ("Network.getCookies", None, "Get tab cookies")
     _GET_ALL_COOKIES    = ("Storage.getCookies", None, "Get all browser cookies")
@@ -103,31 +103,3 @@ class InjectorCommands:
         else:
             logging.getLogger(__name__).error(f"No such command:{name}, Returning None")
             return None
-
-    @classmethod
-    def create_validated_params(cls, name:str , supplied_params:dict) -> dict:
-        """Takes a command name, and supplied_params dict.
-        Returns dict of supplied_params.
-        If supplied_params is missing required keys
-        from command_params returns None
-        """
-        command, command_params_dict, *__ = cls.get_command(name)
-        if not command:
-            logging.getLogger(__name__).error(f"No such command:{name}. Returning None")
-            return None
-
-        if type(supplied_params) is not dict:
-            logging.getLogger(__name__).error(f"Supplied parameters are not a dict. Returning None")
-            return None
-
-        command_params = set(command_params_dict.keys())
-        if not all(key in command_params for key in supplied_params.keys()):
-            logging.getLogger(__name__).error("Not all parameters defined. Returning None")
-            logging.getLogger(__name__).debug(f"Require: {command_params}\nProvided:{supplied_params.keys()}")
-            return None
-        elif not all(key in supplied_params.keys() for key in command_params):
-            logging.getLogger(__name__).warning(f"All parameters accounted for, but provided extra. May experience unexpected behavior")
-            return supplied_params
-        else:
-            logging.getLogger(__name__).debug(f"All parameters accounted for")
-            return supplied_params
