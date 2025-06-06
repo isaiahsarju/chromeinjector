@@ -1,6 +1,6 @@
 # ChromeInjector
 ## About
-*This tool is desined soley for education purposes and authorized testing of information systems, blah, blah, blah*
+*This tool is designed soley for education purposes and authorized testing of information systems, blah, blah, blah*
 
 Extensive documentation is done in the module itself. For an overview see [API Documentation](#api-documentation).
 
