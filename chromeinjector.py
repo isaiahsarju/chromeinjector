@@ -823,12 +823,7 @@ class ChromeInjector:
             self._logger.error("No domain specified")
             return None
         command, *__ = InjectorCommands.get_command("get_domain_cookies")
-        validated_params = InjectorCommands.create_validated_params("get_domain_cookies", params)
-        if validated_params:
-            results = self.cdp_method_exec(command, validated_params, first_window=True, time=time)
-        else:
-            self._logger.error("Incorrect parameters provided. Returning None")
-            return None
+        results = self.cdp_method_exec(command, params, first_window=True, time=time)
         url, result, tab_ws_url = results[0]
         if result:
             return result.get("cookies")
@@ -912,12 +907,7 @@ class ChromeInjector:
             url = 'chrome://newtab'
         params = {"url":url, "background":background,
                   "newWindow":new_window, "forTab": for_tab}
-        validated_params = InjectorCommands.create_validated_params("new_window", params)
-        if validated_params:
-            result = self.cdp_method_exec(command, validated_params, browser_debug_ws=True)
-        else:
-            self._logger.error("Incorrect parameters provided. Returning None")
-            return None
+        result = self.cdp_method_exec(command, params, browser_debug_ws=True)
         targetID = result[0][1].get("targetId")
         ws_url = self.generate_ws_url(targetID)
         return ws_url, targetID
@@ -926,12 +916,7 @@ class ChromeInjector:
         """Return True if tab succesfully closed"""
         command, *__ = InjectorCommands.get_command("close_window")
         params = {"targetId":targetID}
-        validated_params = InjectorCommands.create_validated_params("close_window", params)
-        if validated_params:
-            result = self.cdp_method_exec(command, validated_params, browser_debug_ws=True)
-        else:
-            self._logger.error("Incorrect parameters provided. Returning None")
-            return False
+        result = self.cdp_method_exec(command, params, browser_debug_ws=True)
         return_bool = True if result[0][1] is not None else False
         return return_bool
 
